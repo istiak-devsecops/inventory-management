@@ -21,6 +21,8 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 
 # add user
 RUN groupadd -r appuser && useradd -r -g appuser appuser
+RUN chown -R appuser:appuser
+USER appuser
 
 EXPOSE 80
 
