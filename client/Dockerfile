@@ -1,5 +1,6 @@
 # build stage
 ARG NODE_VERSION=22
+ARG NGINX_VERSION=stable-alpine
 FROM node:${NODE_VERSION} AS builder
 
 WORKDIR /app
@@ -11,7 +12,6 @@ COPY . .
 RUN npm run build
 
 # runtime stage
-ARG NGINX_VERSION=stable-alpine
 FROM nginx:${NGINX_VERSION}
 
 # add user
